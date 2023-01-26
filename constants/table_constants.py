@@ -1,0 +1,4 @@
+ID_ROW_INDEX = 0
+PRICE_ROW_INDEX = 3
+
+ID_ROW_HEADER = "Код"
