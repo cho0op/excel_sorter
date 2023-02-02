@@ -14,7 +14,9 @@ class SheetRangeService:
         range_end = range_start + 1
         while self.sheet[range_end][ID_ROW_INDEX].value is not None:
             range_end += 1
-        return Range(range_start + 1, range_end - 1)
+        new_range = Range(range_start + 1, range_end - 1)
+        print(f"created range: {new_range}")
+        return new_range
 
     def find_ranges_to_sort(self):
         row_count = self.sheet.max_row
