@@ -3,10 +3,11 @@ import time
 from openpyxl.reader.excel import load_workbook
 
 from classes.SheetRangeService import SheetRangeService
+from constants.files import get_ready_file_name
 
 
-def main():
-    workbook = load_workbook(filename="excel_file_to_sort.xlsx")
+def sort_file(file_name):
+    workbook = load_workbook(filename=file_name)
     sheet = workbook.active
     sheet_range_service = SheetRangeService(sheet)
 
@@ -17,8 +18,4 @@ def main():
             sheet_range_service.sort_by_range(range.start, range.end)
         print("--- %s sorting time ---" % (time.time() - start_time))
     finally:
-        workbook.save("excel_file_to_sort_ready.xlsx")
-
-
-if __name__ == "__main__":
-    main()
+        workbook.save(get_ready_file_name(file_name))
